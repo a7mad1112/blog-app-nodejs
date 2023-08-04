@@ -1,5 +1,5 @@
 import { Sequelize } from "sequelize";
-const sequelize = new Sequelize("blogProject", "root", "", {
+export const sequelize = new Sequelize("blogProject", "root", "", {
   host: "localhost",
   dialect:
     "mysql" /* one of 'mysql' | 'postgres' | 'sqlite' | 'mariadb' | 'mssql' | 'db2' | 'snowflake' | 'oracle' */,
