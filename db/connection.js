@@ -6,7 +6,7 @@ export const sequelize = new Sequelize("blogProject", "root", "", {
 });
 export const connectDB = async (req, res) => {
   return await sequelize
-    .sync()
+    .sync({ alert: false })
     .then((result) => console.log("DB Connected"))
     .catch((err) => console.error(err));
 };

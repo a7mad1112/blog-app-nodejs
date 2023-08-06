@@ -19,6 +19,10 @@ const UserModel = sequelize.define("User", {
     allowNull: false,
     defaultValue: false,
   },
+  isAdmin: {
+    type: DataTypes.BOOLEAN,
+    defaultValue: false,
+  },
 });
 
 export default UserModel;
