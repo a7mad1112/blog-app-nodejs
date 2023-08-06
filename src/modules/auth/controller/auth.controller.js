@@ -10,3 +10,21 @@ export const signup = async (req, res) => {
     return res.json({ msg: "error", error });
   }
 };
+
+export const signin = async (req, res) => {
+  try {
+    const { email, password } = req.body;
+    const checkUser = await UserModel.findAll({
+      attributes: ['id', 'userName'],
+      where: {
+        email,
+        password,
+      },
+    });
+    if (!checkUser.length) {
+      return res.json({ msg: "password or email incorrect" });
+    }
+
+    return res.json({ msg: "success", data: checkUser });
+  } catch (error) {}
+};
