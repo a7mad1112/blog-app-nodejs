@@ -1,7 +1,8 @@
 import BlogModel from "./../../../../db/models/blog.model.js";
 import UserModel from "./../../../../db/models/user.model.js";
-export const getBlogs = (req, res) => {
-  return res.json({ msg: "All Blogs" });
+export const getBlogs = async (req, res) => {
+  const blogs = await BlogModel.findAll();
+  return res.json({ msg: "success", blogs });
 };
 
 export const createBlog = async (req, res) => {
