@@ -1,9 +1,19 @@
-import UserModel from './../../../../db/models/user.model.js';
+import UserModel from "./../../../../db/models/user.model.js";
 export const getUsers = async (req, res) => {
   try {
-    const users = await UserModel.findAll();     
+    const users = await UserModel.findAll();
     return res.json({ msg: "success", data: users });
-  } catch(error) {
+  } catch (error) {
     return res.json({ msg: "error", error: error.stack });
   }
+};
+
+export const updateUser = async (req, res) => {
+  const { id } = req.params;
+
+  const userCount = await UserModel.update(req.body, { where: { id } });
+  if (userCount == 0) {
+    return res.json({ msg: "Flied to update user data" });
+  }
+  return res.json({ msg: "success" });
 };
