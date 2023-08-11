@@ -1,7 +1,16 @@
 import BlogModel from "./../../../../db/models/blog.model.js";
 import UserModel from "./../../../../db/models/user.model.js";
+
 export const getBlogs = async (req, res) => {
-  const blogs = await BlogModel.findAll();
+  const blogs = await BlogModel.findAll({
+    attributes: {
+      exclude: ["UserId"],
+    },
+    include: {
+      model: UserModel,
+      attributes: ["userName"],
+    },
+  });
   return res.json({ msg: "success", blogs });
 };
 
