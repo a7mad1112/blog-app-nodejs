@@ -17,3 +17,10 @@ export const updateUser = async (req, res) => {
   }
   return res.json({ msg: "success" });
 };
+
+export const deleteUser = async (req, res) => {
+  const { id } = req.params;
+  const user = await UserModel.destroy({ where: { id } });
+  if (user) return res.json({ msg: "success" });
+  else return res.json({ msg: "Failed to delete user, user not found" });
+};
